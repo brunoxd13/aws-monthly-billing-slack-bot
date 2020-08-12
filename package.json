@@ -1,0 +1,13 @@
+{
+  "name": "aws-monthly-billing-slack-bot",
+  "description": "Send AWS monthy summary billing in a slack channel via webhook.",
+  "version": "1.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "serverless": "^1.78.1",
+    "serverless-python-requirements": "^5.1.0"
+  },
+  "scripts": {
+    "deploy": "serverless deploy"
+  }
+}
