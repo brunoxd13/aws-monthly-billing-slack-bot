@@ -2,6 +2,8 @@
   "name": "aws-monthly-billing-slack-bot",
   "description": "Send AWS monthy summary billing in a slack channel via webhook.",
   "version": "1.0.0",
+  "author": "Bruno Russi Lautenschlager",
+  "license": "MIT",
   "dependencies": {},
   "devDependencies": {
     "serverless": "^1.78.1",
