@@ -9,6 +9,7 @@ start_date = datetime.date.today().replace(day=1)
 end_date = datetime.date.today()
 service_quantity = 5
 low_cost = 70
+high_cost = 100
 
 def report_cost(event, context):
     client = boto3.client('ce')
@@ -76,7 +77,7 @@ def report_cost(event, context):
 
     if total_costs < low_cost:
         emoji = ":spinner:"
-    elif total_costs > 100:
+    elif total_costs > high_cost:
         emoji = ":scream: ATENÇÃO @here o billing está muito alto :redsiren: \n"
     else:
         emoji = ":zany_face: ATENÇÃO @here o billing está em um nível preocupante :warning: \n"
