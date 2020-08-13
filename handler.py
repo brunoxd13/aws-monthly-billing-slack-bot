@@ -7,6 +7,9 @@ import sys
 
 start_date = datetime.date.today().replace(day=1)
 end_date = datetime.date.today()
+service_quantity = 5
+low_cost = 70
+high_cost = 100
 
 def report_cost(event, context):
     client = boto3.client('ce')
@@ -55,11 +58,11 @@ def report_cost(event, context):
 
     most_expensive_services = sorted(cost_by_service.items(), key=lambda i: i[1][-1], reverse=True)
 
-    for service_name, costs in most_expensive_services[:5]:
+    for service_name, costs in most_expensive_services[:service_quantity]:
         buffer += "%-40s US$ %5.2f\n" % (service_name, costs[-1])
 
     other_costs = 0.0
-    for service_name, costs in most_expensive_services[5:]:
+    for service_name, costs in most_expensive_services[service_quantity:]:
         for i, cost in enumerate(costs):
             other_costs += cost
 
@@ -72,9 +75,9 @@ def report_cost(event, context):
 
     buffer += "%-40s US$ %5.2f\n" % ("Total", total_costs)
 
-    if total_costs < 70:
+    if total_costs < low_cost:
         emoji = ":spinner:"
-    elif total_costs > 100:
+    elif total_costs > high_cost:
         emoji = ":scream: ATENÇÃO @here o billing está muito alto :redsiren: \n"
     else:
         emoji = ":zany_face: ATENÇÃO @here o billing está em um nível preocupante :warning: \n"
