@@ -2,6 +2,15 @@
 
 Send AWS monthy summary billing in a slack channel via webhook.
 
+
+## Example of message
+This is an example of message send in Slack:
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/brunoxd13/aws-monthly-billing-slack-bot/master/assets/example.png" alt="logo" width="100" />
+</p>
+<br>
+
 ## Getting Started
 
 ### Prerequisites
