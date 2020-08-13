@@ -7,6 +7,7 @@ import sys
 
 start_date = datetime.date.today().replace(day=1)
 end_date = datetime.date.today()
+service_quantity = 5
 
 def report_cost(event, context):
     client = boto3.client('ce')
@@ -55,11 +56,11 @@ def report_cost(event, context):
 
     most_expensive_services = sorted(cost_by_service.items(), key=lambda i: i[1][-1], reverse=True)
 
-    for service_name, costs in most_expensive_services[:5]:
+    for service_name, costs in most_expensive_services[:service_quantity]:
         buffer += "%-40s US$ %5.2f\n" % (service_name, costs[-1])
 
     other_costs = 0.0
-    for service_name, costs in most_expensive_services[5:]:
+    for service_name, costs in most_expensive_services[service_quantity:]:
         for i, cost in enumerate(costs):
             other_costs += cost
 
