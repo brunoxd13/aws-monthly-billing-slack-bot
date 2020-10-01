@@ -4,9 +4,13 @@ import datetime
 import os
 import requests
 import sys
+import calendar
+
+last_month_day = calendar.monthrange(datetime.date.today().year, datetime.date.today().month)[1]
 
 start_date = datetime.date.today().replace(day=1)
-end_date = datetime.date.today()
+end_date = datetime.date.today().replace(day=last_month_day)
+
 service_quantity = 5
 low_cost = 70
 high_cost = 100
@@ -78,9 +82,9 @@ def report_cost(event, context):
     if total_costs < low_cost:
         emoji = ":spinner:"
     elif total_costs > high_cost:
-        emoji = ":scream: ATENÇÃO @here o billing está muito alto :redsiren: \n"
+        emoji = ":scream: ATENÇÃO <!here> o billing está muito alto :redsiren: \n"
     else:
-        emoji = ":zany_face: ATENÇÃO @here o billing está em um nível preocupante :warning: \n"
+        emoji = ":zany_face: ATENÇÃO <!here> o billing está em um nível preocupante :warning: \n"
 
     summary = "%s Billing atual está em: US$ %5.2f" % (emoji, total_costs)
 
