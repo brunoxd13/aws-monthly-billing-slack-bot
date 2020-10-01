@@ -1,0 +1,153 @@
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    line-height: 1.5;
+    
+}
+
+#showcase{
+    background-image: url(https://images.pexels.com/photos/1267473/pexels-photo-1267473.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+#showcase ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 20px 0px;
+
+}
+#showcase ul li a{
+    text-decoration: none;
+    color:black;
+    background-color: none;
+    padding: 10px 20px;
+    font-family: monospace;
+    font-size: 3vh;
+    }
+
+#showcase ul li a:hover{
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    transition: 0.5s;
+
+    }
+
+#showcase h1{
+    font-size: 10vh;
+    line-height: 1;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: green;
+    margin-bottom: 5px;
+}
+#showcase p{
+    font-size: 3vh;
+    color: green;
+    margin-top: 5px;
+}
+#showcase .button{
+    font-size: 2vh;
+    text-decoration: none;
+    color: white;
+    background-color: blue;
+    padding: 10px 20px;
+    border-radius: 30px;
+
+}
+#showcase .button:hover{
+    background-color: darkblue;
+    transition: 0.5s;
+}
+#sec1 , #sec5, #sec6, #sec7{
+display: grid;
+grid-template-columns: 50% 50%;
+text-align: center;
+justify-content: center;
+}
+ .img:hover{
+    opacity: 90%;
+    transition: 0.5s;
+}
+ .button2{
+    font-size: 1.5;
+    text-decoration: none;
+    color: white;
+    background-color: green;
+    padding: 10px 20px;
+    border-radius: 30px;
+
+}
+ .button2:hover{
+    background-color: darkgreen;
+    color: white;
+    transition: 0.5s;
+}
+#sec2 .cards{
+    margin: 0px 30px;
+    display: flex;
+    flex-wrap: wrap;
+}
+#sec2 .card{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px black; 
+    margin: 50px 50px;
+}
+#sec2 .card:hover{
+    box-shadow: 5px 5px 4px black;
+    background-color: #dbdada;
+}
+#sec2 .image img{
+    width: 50%;
+    padding-left: 25%;
+    padding-right: 25%;
+    padding-top: 20px;
+   
+
+}
+#sec2 .title{
+    text-align: center;
+}
+#sec2 .text{
+    text-align: center;
+    padding: 0px 10px;
+}
+
+.sec3{
+    position: relative;
+    background-color: lightseagreen;
+   
+}
+.video{
+    position: relative;
+    z-index: 0;
+   
+}
+.sec3 video{
+    opacity: 50%;
+ 
+}
+.beach{
+    position: absolute;
+    top:30%;
+    left: 20%;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    
+}
+
+
+   
