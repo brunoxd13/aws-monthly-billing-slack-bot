@@ -20,7 +20,7 @@ To perform the project installation you need to have a package manager installed
 * [Npm](https://www.npmjs.com)
 
 ## Installing process
-### Cloning the porject
+### Cloning the project
 ```
 git clone https://github.com/brunoxd13/aws-monthly-billing-slack-bot.git
 
@@ -31,6 +31,18 @@ cd aws-monthly-billing-slack-bot
 Install project depencencies:
 
 `npm install`
+
+### Create `.env` file
+
+Define environment variables to work correctly, eg.:
+
+```
+SERVICE_QUANTITY=5
+LOW_COST=70
+HIGH_COST=100
+```
+
+Or just rename file `.env-example` to `.env`.
 
 ### Configure Slack
 
