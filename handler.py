@@ -1,3 +1,4 @@
+from dotenv import load_dotenv
 from collections import defaultdict
 import boto3
 import datetime
@@ -6,14 +7,18 @@ import requests
 import sys
 import calendar
 
-last_month_day = calendar.monthrange(datetime.date.today().year, datetime.date.today().month)[1]
+load_dotenv()
+
+last_month_day = calendar.monthrange(
+    datetime.date.today().year, datetime.date.today().month)[1]
 
 start_date = datetime.date.today().replace(day=1)
 end_date = datetime.date.today().replace(day=last_month_day)
 
-service_quantity = 5
-low_cost = 70
-high_cost = 100
+service_quantity = os.getenv("SERVICE_QUANTITY")
+low_cost = os.getenv("LOW_COST")
+high_cost = os.getenv("HIGH_COST")
+
 
 def report_cost(event, context):
     client = boto3.client('ce')
@@ -60,7 +65,8 @@ def report_cost(event, context):
 
             cost_by_service[key].append(cost)
 
-    most_expensive_services = sorted(cost_by_service.items(), key=lambda i: i[1][-1], reverse=True)
+    most_expensive_services = sorted(
+        cost_by_service.items(), key=lambda i: i[1][-1], reverse=True)
 
     for service_name, costs in most_expensive_services[:service_quantity]:
         buffer += "%-40s US$ %5.2f\n" % (service_name, costs[-1])

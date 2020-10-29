@@ -180,3 +180,6 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+# npm
+package-lock.json
