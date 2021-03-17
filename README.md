@@ -32,6 +32,8 @@ Install project depencencies:
 
 `npm install`
 
+`pip install pipenv`
+
 ### Create `.env` file
 
 Define environment variables to work correctly, eg.:
