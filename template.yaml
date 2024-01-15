@@ -1,0 +1,67 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  aws-billing-messaging
+
+  Send AWS monthy summary billing every day in a slack channel or telegram.
+
+Globals:
+  Function:
+    Timeout: 3
+    MemorySize: 128
+
+Parameters:
+  SlackWebhookToken:
+    Type: String
+    Default: ""
+
+  TelegramChatId:
+    Type: String
+    Default: ""
+
+  TelegramToken:
+    Type: String
+    Default: ""
+
+  ServiceQuantity:
+    Type: Number
+    Default: 5
+
+  LowCost:
+    Type: Number
+    Default: 10
+
+  HighCost:
+    Type: Number
+    Default: 50
+
+Resources:
+  LambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: aws_billing_messaging/
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      Architectures:
+        - x86_64
+      Environment:
+        Variables:
+          SLACK_WEBHOOK_TOKEN: !Ref SlackWebhookToken
+          TELEGRAM_CHAT_ID: !Ref TelegramChatId
+          TELEGRAM_TOKEN: !Ref TelegramToken
+          SERVICE_QUANTITY: !Ref ServiceQuantity
+          LOW_COST: !Ref LowCost
+          HIGH_COST: !Ref HighCost
+      Events:
+        MyFunctionSchedule:
+          Type: Schedule
+          Properties:
+            # Every day at 11:00 UTC / 08am BRT
+            Schedule: cron(0 11 * * ? *)
+      Policies:
+        - Statement:
+            - Sid: CostExplorerLambdaPermission
+              Effect: Allow
+              Action:
+                - ce:GetCostAndUsage
+              Resource: "*"
